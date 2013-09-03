@@ -38,11 +38,11 @@
                 <div class="nav-collapse collapse" id="nav-collapse-01">
                     <ul class="nav">
                   <!-- Menu items go here -->
-                    <li class="active"><a href="#fakelink">Register</a></li>
+                    <li class="active"><a href="Register.php">Register</a></li>
                    
 
                     </ul>
-                    <div style="padding-left:90%; padding-top:0.8%"><button class="btn btn-danger">Logout!</button></div>
+                   
                 </div>
             </div>
         </div>
@@ -69,8 +69,8 @@
 			print $content;
 		}else{
 			$content .= '<h4>Registration is complete.</h4>'."\n";
-			$content .= '<div class="span1">'."\n";
-			$content .= '<h6>Your username is '.$_POST['username'].'.</h6>'."\n";
+			$content .= '<div >'."\n";
+			$content .= '<h6>Your username is <b>'.$_POST['username'].'</b>.</h6>'."\n";
 			
 			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
 			if(mysqli_connect_errno($db)){
@@ -78,16 +78,15 @@
 			}if(!isset($db)){
 				$content .= 'ERROR: Cannot connect to the database.';
 			}else{
-				$content .= 'Connect to db success.'."\n";
 				$q = 'INSERT INTO User (username,password,user_type) 
 				VALUES ("'.$_POST['username'].'",
 						"'.$_POST['password'].'",
 						0)';
 				if(mysqli_query($db,$q)){
-					$content .= 'added to db'."\n";
+					$content .= '<p>&nbsp</p><button class="btn btn-success">Go to log-in</button>'."\n";
 				}
 				else{
-					$content .= 'Error cannot add to db'."\n";
+					$content .= 'Error! cannot Register.'."\n";
 				}
 			}
 			$content .='</div>'."\n";
