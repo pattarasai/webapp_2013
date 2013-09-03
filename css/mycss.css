@@ -1,0 +1,37 @@
+.dataBlock{
+margin-top:30px;
+width: 90%; 
+height: 210px;
+border-radius: 5px;
+border-style:solid;
+border-width:2px;
+
+}
+.dataType{
+width: 99.5%; 
+height: 25px;
+border-style:solid;
+border-width:1px;
+border-radius: 2px;
+background-color:#3b5598;
+color:white;
+font-size:18px
+}
+.dataContentGive{
+padding-top:5%;
+width: 50%; 
+height: 60%;
+float:left
+}
+.dataContentWant{
+padding-top:5%;
+width: 50%; 
+height: 60%;
+float:left
+}
+.dataStatus{
+padding-left:10%;
+width: 99.5%; 
+height: 25px;
+font-size:18px
+}

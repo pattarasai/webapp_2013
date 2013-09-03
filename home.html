@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- Loading Bootstrap -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="css/demo.css" rel="stylesheet">
+    <link href="css/flat-ui.css" rel="stylesheet">
+
+
+    <script src="jquery-1.10.2.min.js"></script>
+
+    
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    <div class="header-banner" style="background-color:#3b5598">
+        <p>
+            <a href="http://designmodo.com/flat/?utm_source=designmodo&amp;utm_medium=TopBannerFlatUI&amp;utm_campaign=TopBannerFlatUI" class="banner-flat-text">Ning's Image</a>
+        </p>
+    </div>
+
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#nav-collapse-01"></button>
+                <a href="#" class="brand fui-flat"></a>
+
+                <div class="nav-collapse collapse" id="nav-collapse-01">
+                    <ul class="nav">
+                  <!-- Menu items go here -->
+                    <li class="active"><a href="#fakelink">Home</a></li>
+                    <li class=""><a href="#fakelink">New Exchange</a></li>
+                    <li class=""><a href="#fakelink">My Timeline</a></li>
+                    <li class=""><a href="#fakelink">Personal Messages</a></li>
+
+                    </ul>
+                    <div style="padding-left:90%; padding-top:0.8%"><button class="btn btn-danger">Logout!</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+          
+    <div class="demo-row demo-tabs">
+        <div class="demo-title">
+          <h3 class="demo-panel-title">Tabs</h3>
+        </div>
+        <div class="demo-content">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Popular</a></li>
+            <li><a href="#">Newest</a></li>
+            <li><a href="#">Bestselling</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Dropdown
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#tab2">Newest</a></li>
+                <li><a href="#tab3">Bestselling</a></li>
+              </ul>
+            </li>
+          </ul> <!-- /tabs -->
+
+          <ul class="nav nav-tabs nav-append-content">
+            <li class="active"><a href="#tab1">Popular</a></li>
+            <li><a href="#tab2">Newest</a></li>
+            <li><a href="#tab3">Bestselling</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Dropdown
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#tab2">Newest</a></li>
+                <li><a href="#tab3">Bestselling</a></li>
+              </ul>
+            </li>
+          </ul> <!-- /tabs -->
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <p>I'm in Section 1.</p>
+            </div>
+
+            <!-- /tabs -->
+            <div class="tab-pane" id="tab2">
+              <p>Howdy, I'm in Section 2.</p>
+            </div>
+
+            <!-- /tabs -->
+            <div class="tab-pane" id="tab3">
+              <p>Howdy, I'm in Section 3.</p>
+            </div>
+          </div> <!-- /tab-content -->
+
+          <div class="mvl pvl">
+            <div class="tabbable tabs-left">
+              <ul class="nav nav-tabs nav-append-content">
+                <li><a href="#tab4">Popular</a></li>
+                <li class="active"><a href="#tab5">Newest</a></li>
+                <li><a href="#tab6">Bestselling</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Dropdown
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#tab5">Newest</a></li>
+                    <li><a href="#tab6">Bestselling</a></li>
+                  </ul>
+                </li>
+              </ul> <!-- /tabs -->
+              <div class="tab-content">
+                <div class="tab-pane" id="tab4">
+                  <p>I'm in Section 1.</p>
+                </div>
+                <div class="tab-pane active" id="tab5">
+                  <p>Howdy, I'm in Section 2.</p>
+                </div>
+                <div class="tab-pane" id="tab6">
+                  <p>Howdy, I'm in Section 3.</p>
+                </div>
+              </div> <!-- /tab-content -->
+            </div> <!-- /tabs-left -->
+          </div>
+
+        </div>
+      </div>
+		
+  
+    <script> 
+        $("#tab1").click(function() {
+            $("#tab1").addClass("active");
+			$("#tab2").removeClass("active")
+			$("#tab3").removeClass("active")
+			$("#tab4").removeClass("active")
+			});
+			
+		$("#tab2").click(function() {
+            $("#tab2").addClass("active");
+			$("#tab1").removeClass("active")
+			$("#tab3").removeClass("active")
+			$("#tab4").removeClass("active")
+			});
+			
+		$("#tab3").click(function() {
+            $("#tab3").addClass("active");
+			$("#tab1").removeClass("active")
+			$("#tab2").removeClass("active")
+			$("#tab4").removeClass("active")
+			});
+		$("#tab4").click(function() {
+            $("#tab4").addClass("active");
+			$("#tab1").removeClass("active")
+			$("#tab2").removeClass("active")
+			$("#tab3").removeClass("active")
+			});
+    </script>
+
+        <!-- /.container -->
+    <!-- Load JS here for greater good =============================-->
+  <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/jquery.stacktable.js"></script>
+
+  </body>
+</html>
