@@ -40,7 +40,7 @@
                   <!-- Menu items go here -->
                     <li class="active"><a href="Register.php">Register</a></li>
                     </ul>
-                   
+                    <div style="padding-left:90%; padding-top:0.8%"><button class="btn btn-success" style="color:white"><a href="login.php">Login</a></button></div>
                 </div>
             </div>
         </div>
