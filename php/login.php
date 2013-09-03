@@ -58,28 +58,25 @@
 			$content .= '</form>'."\n";
 			print $content;
 		}else{
-			$content .= '<h4>Registration is complete.</h4>'."\n";
-			$content .= '<div >'."\n";
-			$content .= '<h6>Your username is <b>'.$_POST['username'].'</b>.</h6>'."\n";
-			
+			session_start();
 			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
-			if(mysqli_connect_errno($db)){
-				$db = null;
-			}if(!isset($db)){
-				$content .= 'ERROR: Cannot connect to the database.';
-			}else{
-				$q = 'INSERT INTO User (username,password,user_type) 
-				VALUES ("'.$_POST['username'].'",
-						"'.$_POST['password'].'",
-						0)';
-				if(mysqli_query($db,$q)){
-					$content .= '<p>&nbsp</p><button class="btn btn-success">Go to log-in</button>'."\n";
-				}
-				else{
-					$content .= 'Error! cannot Register.'."\n";
-				}
+			$strSQL = "SELECT * FROM User WHERE username = '".$_POST['username_login']."'and password ='".$_POST['password_login']."'";
+			$r= mysqli_query($db,$strSQL);
+			$row = mysqli_fetch_array($r);
+			if(!$row){
+				$content .= '<form action="login.php" method="post">'."\n";
+				$content .= '  <span class="form-label">Username: </span><input type="text" name="username_login"/><br/>'."\n";
+				$content .= '  <span class="form-label">Password: </span><input type="password" name="password_login"/><br/>'."\n";
+				$content .= '  <input type="hidden" name="form_id" value="login-form">'."\n";
+				$content .= '  <input type="submit" value="log in" class="btn btn-primary"/>'."\n";
+				$content .= '</form>'."\n";
+				$content .= '<h4 style="color:red">Error, wrong username or password</h4>';
 			}
-			$content .='</div>'."\n";
+			else{
+				$_SESSION['username'] = $_POST['username'];
+				$content .= 'logged in';
+			}
+			
 			print $content;
 		}
 	?>
