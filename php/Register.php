@@ -66,9 +66,7 @@
 			$content .= '</form>'."\n";
 			print $content;
 		}else{
-			$content .= '<h4>Registration is complete.</h4>'."\n";
-			$content .= '<div >'."\n";
-			$content .= '<h6>Your username is <b>'.$_POST['username'].'</b>.</h6>'."\n";
+			
 			
 			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
 			if(mysqli_connect_errno($db)){
@@ -81,10 +79,13 @@
 						"'.$_POST['password'].'",
 						0)';
 				if(mysqli_query($db,$q)){
+				$content .= '<h4>Registration is complete.</h4>'."\n";
+			$content .= '<div >'."\n";
+			$content .= '<h6>Your username is <b>'.$_POST['username'].'</b>.</h6>'."\n";
 					$content .= '<p>&nbsp</p><button class="btn btn-success">Go to log-in</button>'."\n";
 				}
 				else{
-					$content .= 'Error! cannot Register.'."\n";
+					$content .= '<h3>Error! This username is already used.</h3>'."\n";
 				}
 			}
 			$content .='</div>'."\n";
