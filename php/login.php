@@ -74,7 +74,8 @@
 			}
 			else{
 				$_SESSION['username'] = $_POST['username'];
-				$content .= 'logged in';
+				// link to home after success login
+				header("Location: index2.html");
 			}
 			
 			print $content;
