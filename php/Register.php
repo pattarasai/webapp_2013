@@ -40,7 +40,6 @@
                   <!-- Menu items go here -->
                     <li class="active"><a href="Register.php">Register</a></li>
                    
-
                     </ul>
                    
                 </div>
