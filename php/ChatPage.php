@@ -56,36 +56,23 @@
 		if(!isset($_SESSION['username'])){
 			// link to home if user isn't loggedin
 				header("Location: login.php");
-		}else if(!isset($_GET['username2'])){
-			//select people to talk
-			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
-			$q = "SELECT DISTINCT  `username2` FROM `Message` WHERE `username1`='".$_SESSION['username']."' OR `username2`='".$_SESSION['username']."'";
-			$r = mysqli_query($db,$q);
-			$content .= '<table class="table table-striped table-hover">';
-			while($row = mysqli_fetch_array($r)){
-			if($row['username2']!=$_SESSION['username']){
-				$content .= '<tr>'."\n";
-				$content .= '<td>'.$row['username2'].'</td>';
-				$content .= '<td><a href="ChatPage.php?username2='.$row['username2'].'">Talk</a>'."\n";
-				$content .= '</tr>'."\n";
-			}
-			}
-			$content .='</table>';
-			print $content;
 		}
 		else{
 			//chat page
+			
+			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
 			$signedInUser = $_SESSION['username'];
 			$talkingWithUser =$_GET['username2'];
+			print '<div style="padding-buttom:100px"><h6>You are chatting with :'.$talkingWithUser.'.</h6></div>';
 			
 			if(!isset($_POST['message'])){
-				$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
+				$_SESSION['talkingWithUser'] = $_GET['username2'];
 				$q = "SELECT * FROM `Message` WHERE `username1`='".$signedInUser."'AND `username2`='".$talkingWithUser."'  OR `username2`='".$signedInUser."' AND `username1`='".$talkingWithUser."'  ORDER BY `timestamp` DESC";
 				$r = mysqli_query($db,$q);
-				$content .= '<form action="Message.php" method="post">'."\n";
+				$content .= '<form action="ChatPage.php" method="post" style="padding-top:25px">'."\n";
 				$content .= '<div class="control-group" style="padding-left:15px">';
 				$content .= ' <div class="input-append">';
-				$content .= '<input type="text" class="span4" placeholder="Append" name="message"/>';
+				$content .= '<input type="text" class="span4" placeholder="Write Something Here." name="message"/>';
 				$content .= '<input type="submit" value="Send" class="btn btn-primary"/>';
 				$content .= '</div>';
 				$content .='</div>';
@@ -104,6 +91,23 @@
 					}
 				}
 				
+				print $content;
+			}
+			else{
+				session_start();
+				$sender = $_SESSION['username'];
+				$reciever= $_SESSION['talkingWithUser'];
+				$q = 'INSERT INTO Message (username1,username2,message,timestamp) 
+				VALUES ("'.$sender.'",
+						"'.$reciever.'",
+						"'.$_POST['message'].'",SYSDATE())';
+				if(mysqli_query($db,$q)){
+					
+					header("Location: ChatPage.php?username2=$reciever");
+				}
+				else{
+					$content .= 'Error! cannot send.'."\n";
+				}
 				print $content;
 			}
 		}
