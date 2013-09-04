@@ -56,26 +56,24 @@
 		if(!isset($_SESSION['username'])){
 			// link to home if user isn't loggedin
 				header("Location: login.php");
-		}else{
+		}else if(!isset($_GET['username2'])){
 			$content .= '<h3>'.$_SESSION['username'].'</h3>';
 			$db = mysqli_connect("localhost","chulapor_gr5","asdyui","chulapor_gr5");
-			if(mysqli_connect_errno($db)){
-				$db = null;
-			}if(!isset($db)){
-				$content .= 'ERROR: Cannot connect to the database.';
-			}else{
-				$q = "SELECT DISTINCT  `username2` FROM `Message` WHERE `username1`='".$_SESSION['username']."'";
-				$r= mysqli_query($db,&q);
-				$content .= '<table>';
-				while($row = mysqli_fetch_array($r)){
-					$content .= '    <tr>'."\n";
-					$content .= '    <td>'.$row['username2'].'</td>'."\n";
-					$content .= '    </tr>'."\n";
-				}
-				$content .= '</table>';
+			$q = "SELECT DISTINCT  `username2` FROM `Message` WHERE `username1`='".$_SESSION['username']."'";
+			$r = mysqli_query($db,$q);
+			$content .= '<table class="table table-striped table-hover">';
+			while($row = mysqli_fetch_array($r)){
+			$content .= '<tr>'."\n";
+			$content .= '<td>'.$row['username2'].'</td>';
+			$content .= '<td><a href="Message.php?username2='.$row['username2'].'">Talk</a>'."\n";
+			$content .= '</tr>'."\n";
 			}
-			
+			$content .='</table>';
 			print $content;
+		}
+		else{
+			$username2 =$_GET['username2'];
+			print $username2;
 		}
 	?>
 	</div>
