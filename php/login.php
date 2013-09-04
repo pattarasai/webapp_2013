@@ -73,7 +73,7 @@
 				$content .= '<h4 style="color:red">Error, wrong username or password</h4>';
 			}
 			else{
-				$_SESSION['username'] = $_POST['username'];
+				$_SESSION['username'] = $_POST['username_login'];
 				// link to home after success login
 				header("Location: index2.html");
 			}
